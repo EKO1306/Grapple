@@ -1,0 +1,121 @@
+[gd_scene load_steps=16 format=3 uid="uid://6ebpncxnsehb"]
+
+[ext_resource type="Script" uid="uid://cksfh1ys4d7uh" path="res://Scripts/player.gd" id="1_pie2b"]
+[ext_resource type="Texture2D" uid="uid://c6u77rv6s5kf2" path="res://Assets/Textures/Player/PlayerBody.png" id="1_qlfej"]
+[ext_resource type="Texture2D" uid="uid://ynsnf7u77gis" path="res://Assets/Textures/Player/PlayerHead.png" id="2_pie2b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv3sw"]
+atlas = ExtResource("1_qlfej")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4ynj"]
+atlas = ExtResource("1_qlfej")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nrtn"]
+atlas = ExtResource("1_qlfej")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfp35"]
+atlas = ExtResource("1_qlfej")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pie2b"]
+atlas = ExtResource("2_pie2b")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmu34"]
+atlas = ExtResource("2_pie2b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bouj"]
+atlas = ExtResource("2_pie2b")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hphp"]
+atlas = ExtResource("2_pie2b")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3gfx"]
+atlas = ExtResource("2_pie2b")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x5p36"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hphp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3gfx")
+}],
+"loop": false,
+"name": &"Blink",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3gfx")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g5gn8"]
+atlas = ExtResource("2_pie2b")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sfp35"]
+radius = 3.0
+height = 28.0
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_pie2b")
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2(0, 10)
+
+[node name="Leg" type="Sprite2D" parent="Sprite"]
+position = Vector2(0, -2)
+texture = SubResource("AtlasTexture_hv3sw")
+
+[node name="Wheel" type="Sprite2D" parent="Sprite/Leg"]
+position = Vector2(0, 4)
+texture = SubResource("AtlasTexture_r4ynj")
+
+[node name="BodyBG" type="Sprite2D" parent="Sprite"]
+position = Vector2(0.5, -9)
+texture = SubResource("AtlasTexture_6nrtn")
+
+[node name="Body" type="Sprite2D" parent="Sprite/BodyBG"]
+texture = SubResource("AtlasTexture_sfp35")
+
+[node name="HeadBG" type="Sprite2D" parent="Sprite"]
+position = Vector2(0.5, -20)
+texture = SubResource("AtlasTexture_pie2b")
+
+[node name="Head" type="Sprite2D" parent="Sprite/HeadBG"]
+position = Vector2(-0.5, 0)
+texture = SubResource("AtlasTexture_wmu34")
+
+[node name="ScreenBG" type="Sprite2D" parent="Sprite/HeadBG/Head"]
+show_behind_parent = true
+texture = SubResource("AtlasTexture_0bouj")
+
+[node name="Eyes" type="AnimatedSprite2D" parent="Sprite/HeadBG/Head/ScreenBG"]
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_x5p36")
+animation = &"Default"
+
+[node name="Scanlines" type="Sprite2D" parent="Sprite/HeadBG/Head/ScreenBG"]
+modulate = Color(1, 1, 1, 0.2)
+texture = SubResource("AtlasTexture_g5gn8")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -8)
+zoom = Vector2(5, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_sfp35")
