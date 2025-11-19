@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcx1r1mgfojjy"
-path="res://.godot/imported/TestGrid.png-5317f8841d634013c97c7412689c9525.ctex"
+uid="uid://dpt7yalj1lpa0"
+path="res://.godot/imported/Wheel.png-b1d0e65378e794143128acefdb33b811.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Gridmap/TestGrid.png"
-dest_files=["res://.godot/imported/TestGrid.png-5317f8841d634013c97c7412689c9525.ctex"]
+source_file="res://Assets/Textures/Player/Wheel.png"
+dest_files=["res://.godot/imported/Wheel.png-b1d0e65378e794143128acefdb33b811.ctex"]
 
 [params]
 

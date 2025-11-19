@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b675liqy8knfq"]
+
+[ext_resource type="Script" uid="uid://ds0um4tw47ety" path="res://Scripts/Props/Misc/camera_lock.gd" id="1_3ki05"]
+
+[node name="CameraLock" type="Area2D"]
+monitorable = false
+script = ExtResource("1_3ki05")

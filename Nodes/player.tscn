@@ -1,53 +1,120 @@
-[gd_scene load_steps=16 format=3 uid="uid://6ebpncxnsehb"]
+[gd_scene load_steps=41 format=3 uid="uid://6ebpncxnsehb"]
 
 [ext_resource type="Script" uid="uid://cksfh1ys4d7uh" path="res://Scripts/player.gd" id="1_pie2b"]
-[ext_resource type="Texture2D" uid="uid://c6u77rv6s5kf2" path="res://Assets/Textures/Player/PlayerBody.png" id="1_qlfej"]
-[ext_resource type="Texture2D" uid="uid://ynsnf7u77gis" path="res://Assets/Textures/Player/PlayerHead.png" id="2_pie2b"]
+[ext_resource type="Texture2D" uid="uid://qs7y335jicj7" path="res://Assets/Textures/Player/Leg.png" id="2_0bouj"]
+[ext_resource type="Texture2D" uid="uid://db4aigyodyi38" path="res://Assets/Textures/Player/Normals/LegNormal.png" id="3_2hphp"]
+[ext_resource type="Texture2D" uid="uid://dpt7yalj1lpa0" path="res://Assets/Textures/Player/Wheel.png" id="4_e3gfx"]
+[ext_resource type="Texture2D" uid="uid://c7tqyqwi1uxqj" path="res://Assets/Textures/Player/BodyBG.png" id="4_r4ynj"]
+[ext_resource type="Texture2D" uid="uid://dncnwrwvcd65x" path="res://Assets/Textures/Player/Body.png" id="4_wmu34"]
+[ext_resource type="Texture2D" uid="uid://b6s0mn5gh87wb" path="res://Assets/Textures/Player/Normals/BodyNormal.png" id="5_0bouj"]
+[ext_resource type="Texture2D" uid="uid://b6ewqj7vfsxwx" path="res://Assets/Textures/Player/Normals/BodyBGNormal.png" id="5_wmu34"]
+[ext_resource type="Texture2D" uid="uid://cjy1pj4jrfbey" path="res://Assets/Textures/Player/Normals/WheelNormal.png" id="5_x5p36"]
+[ext_resource type="Texture2D" uid="uid://b8kk42vycrxrq" path="res://Assets/Textures/Player/BodyGlow.png" id="10_8euyb"]
+[ext_resource type="Texture2D" uid="uid://35k0a8ef4m61" path="res://Assets/Textures/Player/HeadBG.png" id="10_x5p36"]
+[ext_resource type="Texture2D" uid="uid://cpbtg6cqq7b5i" path="res://Assets/Textures/Player/GrappleLine.png" id="11_axrd7"]
+[ext_resource type="Texture2D" uid="uid://73edyh6qbu53" path="res://Assets/Textures/Player/Normals/HeadBGNormal.png" id="11_g5gn8"]
+[ext_resource type="Texture2D" uid="uid://cp6hncdxlhvrm" path="res://Assets/Textures/Player/Head.png" id="12_6nrtn"]
+[ext_resource type="Texture2D" uid="uid://lxc3ksu0cx3h" path="res://Assets/Textures/Player/Normals/HeadNormal.png" id="13_hjyf3"]
+[ext_resource type="Texture2D" uid="uid://ci6etn00haihm" path="res://Assets/Textures/Player/Screen.png" id="14_hjyf3"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hv3sw"]
-atlas = ExtResource("1_qlfej")
-region = Rect2(16, 16, 16, 16)
+[sub_resource type="CanvasTexture" id="CanvasTexture_8euyb"]
+diffuse_texture = ExtResource("2_0bouj")
+normal_texture = ExtResource("3_2hphp")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_r4ynj"]
-atlas = ExtResource("1_qlfej")
-region = Rect2(0, 16, 16, 16)
+[sub_resource type="CanvasTexture" id="CanvasTexture_g5gn8"]
+diffuse_texture = ExtResource("4_e3gfx")
+normal_texture = ExtResource("5_x5p36")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6nrtn"]
-atlas = ExtResource("1_qlfej")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="Gradient" id="Gradient_pie2b"]
+colors = PackedColorArray(0.6, 0.59607846, 0.6901961, 1, 0.19215687, 0.27450982, 0.3254902, 0)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sfp35"]
-atlas = ExtResource("1_qlfej")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sfp35"]
+gradient = SubResource("Gradient_pie2b")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pie2b"]
-atlas = ExtResource("2_pie2b")
-region = Rect2(16, 0, 16, 16)
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hv3sw"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(2, 0, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+inherit_velocity_ratio = -0.1
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 4.0
+initial_velocity_max = 8.0
+gravity = Vector3(0, 9.8, 0)
+damping_min = 8.0
+damping_max = 8.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_sfp35")
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wmu34"]
-atlas = ExtResource("2_pie2b")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="CanvasTexture" id="CanvasTexture_hjyf3"]
+diffuse_texture = ExtResource("4_r4ynj")
+normal_texture = ExtResource("5_wmu34")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_pie2b"]
+diffuse_texture = ExtResource("4_wmu34")
+normal_texture = ExtResource("5_0bouj")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wha1n"]
+cull_mode = 1
+polygon = PackedVector2Array(-4, -5, -4, -4, -5, -4, -5, -3, -4, -3, -4, 1, -3, 1, -3, 2, -2, 2, -2, 3, -1, 3, -1, 4, 1, 4, 1, 3, 2, 3, 2, 2, 3, 2, 3, 1, 4, 1, 4, -3, 5, -3, 5, -4, 4, -4, 4, -5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_axrd7"]
+light_mode = 1
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_ewvgn"]
+cull_mode = 1
+polygon = PackedVector2Array(-2, -1, -2, 1, 2, 1, 2, -1)
+
+[sub_resource type="Gradient" id="Gradient_jkceb"]
+offsets = PackedFloat32Array(0, 0.75)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pie2b"]
+gradient = SubResource("Gradient_jkceb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8euyb"]
+light_mode = 1
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_6nrtn"]
+diffuse_texture = ExtResource("10_x5p36")
+normal_texture = ExtResource("11_g5gn8")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_axrd7"]
+cull_mode = 1
+polygon = PackedVector2Array(-8, -4.5, -8, 5.5, 7, 5.5, 7, -4.5)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_axrd7"]
+diffuse_texture = ExtResource("12_6nrtn")
+normal_texture = ExtResource("13_hjyf3")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_pie2b"]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0bouj"]
-atlas = ExtResource("2_pie2b")
+atlas = ExtResource("14_hjyf3")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8euyb"]
+atlas = ExtResource("14_hjyf3")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axrd7"]
+atlas = ExtResource("14_hjyf3")
 region = Rect2(0, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2hphp"]
-atlas = ExtResource("2_pie2b")
-region = Rect2(16, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e3gfx"]
-atlas = ExtResource("2_pie2b")
-region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x5p36"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2hphp")
+"texture": SubResource("AtlasTexture_8euyb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e3gfx")
+"texture": SubResource("AtlasTexture_axrd7")
 }],
 "loop": false,
 "name": &"Blink",
@@ -55,7 +122,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e3gfx")
+"texture": SubResource("AtlasTexture_axrd7")
 }],
 "loop": true,
 "name": &"Default",
@@ -63,14 +130,17 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g5gn8"]
-atlas = ExtResource("2_pie2b")
-region = Rect2(16, 16, 16, 16)
+atlas = ExtResource("14_hjyf3")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sfp35"]
 radius = 3.0
 height = 28.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_axrd7"]
+radius = 32.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_pie2b")
 
 [node name="Sprite" type="Node2D" parent="."]
@@ -78,44 +148,102 @@ position = Vector2(0, 10)
 
 [node name="Leg" type="Sprite2D" parent="Sprite"]
 position = Vector2(0, -2)
-texture = SubResource("AtlasTexture_hv3sw")
+texture = SubResource("CanvasTexture_8euyb")
 
 [node name="Wheel" type="Sprite2D" parent="Sprite/Leg"]
 position = Vector2(0, 4)
-texture = SubResource("AtlasTexture_r4ynj")
+texture = SubResource("CanvasTexture_g5gn8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprite/Leg"]
+position = Vector2(0, 7)
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_hv3sw")
 
 [node name="BodyBG" type="Sprite2D" parent="Sprite"]
-position = Vector2(0.5, -9)
-texture = SubResource("AtlasTexture_6nrtn")
+position = Vector2(0, -9)
+texture = SubResource("CanvasTexture_hjyf3")
 
 [node name="Body" type="Sprite2D" parent="Sprite/BodyBG"]
-texture = SubResource("AtlasTexture_sfp35")
+texture = SubResource("CanvasTexture_pie2b")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite/BodyBG/Body"]
+visible = false
+occluder = SubResource("OccluderPolygon2D_wha1n")
+
+[node name="BodyGlow" type="Sprite2D" parent="Sprite/BodyBG/Body"]
+material = SubResource("CanvasItemMaterial_axrd7")
+position = Vector2(0, -2)
+texture = ExtResource("10_8euyb")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite/BodyBG/Body/BodyGlow"]
+occluder = SubResource("OccluderPolygon2D_ewvgn")
+
+[node name="PointLight2D" type="PointLight2D" parent="Sprite/BodyBG/Body/BodyGlow"]
+color = Color(0.3882353, 0.60784316, 1, 1)
+energy = 1.5
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_pie2b")
+texture_scale = 0.15
+height = 2.0
+
+[node name="GrappleLine" type="Line2D" parent="Sprite/BodyBG/Body/BodyGlow"]
+z_index = 8
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_8euyb")
+width = 1.0
+texture = ExtResource("11_axrd7")
+texture_mode = 1
 
 [node name="HeadBG" type="Sprite2D" parent="Sprite"]
 position = Vector2(0.5, -20)
-texture = SubResource("AtlasTexture_pie2b")
+texture = SubResource("CanvasTexture_6nrtn")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite/HeadBG"]
+occluder = SubResource("OccluderPolygon2D_axrd7")
 
 [node name="Head" type="Sprite2D" parent="Sprite/HeadBG"]
 position = Vector2(-0.5, 0)
-texture = SubResource("AtlasTexture_wmu34")
+texture = SubResource("CanvasTexture_axrd7")
 
 [node name="ScreenBG" type="Sprite2D" parent="Sprite/HeadBG/Head"]
 show_behind_parent = true
+material = SubResource("CanvasItemMaterial_pie2b")
 texture = SubResource("AtlasTexture_0bouj")
 
 [node name="Eyes" type="AnimatedSprite2D" parent="Sprite/HeadBG/Head/ScreenBG"]
+use_parent_material = true
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_x5p36")
 animation = &"Default"
 
+[node name="PointLight2D" type="PointLight2D" parent="Sprite/HeadBG/Head/ScreenBG/Eyes"]
+color = Color(0.29803923, 0.6313726, 1, 1)
+energy = 0.2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+texture = SubResource("GradientTexture2D_pie2b")
+texture_scale = 0.5
+height = 8.0
+
 [node name="Scanlines" type="Sprite2D" parent="Sprite/HeadBG/Head/ScreenBG"]
-modulate = Color(1, 1, 1, 0.2)
+modulate = Color(1, 1, 1, 0.1)
+use_parent_material = true
 texture = SubResource("AtlasTexture_g5gn8")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -8)
-zoom = Vector2(5, 5)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_sfp35")
+
+[node name="GrappleCheckArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrappleCheckArea"]
+shape = SubResource("CircleShape2D_axrd7")
+
+[node name="GrappleRaycast" type="RayCast2D" parent="GrappleCheckArea"]
+collision_mask = 32

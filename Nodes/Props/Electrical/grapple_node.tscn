@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://ep75p5fxdgxg"]
+
+[ext_resource type="Texture2D" uid="uid://c4m1n7nrqtw1x" path="res://Assets/Textures/Props/Electrical/GrappleNode.png" id="1_jkceb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3ubc"]
+atlas = ExtResource("1_jkceb")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_spa50"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3ubc")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jkceb"]
+radius = 4.0
+
+[sub_resource type="Gradient" id="Gradient_jkceb"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q3ubc"]
+gradient = SubResource("Gradient_jkceb")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 1)
+
+[node name="GrappleNode" type="Area2D"]
+collision_layer = 16
+collision_mask = 16
+monitoring = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = -4
+position = Vector2(0, 8)
+sprite_frames = SubResource("SpriteFrames_spa50")
+animation = &"Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_jkceb")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.29803923, 0.6313726, 1, 1)
+energy = 0.6
+shadow_enabled = true
+texture = SubResource("GradientTexture2D_q3ubc")
