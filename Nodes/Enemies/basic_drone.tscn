@@ -1,0 +1,217 @@
+[gd_scene load_steps=21 format=3 uid="uid://cc67uf13k34lb"]
+
+[ext_resource type="Texture2D" uid="uid://goe783dwvsnr" path="res://Assets/Textures/Enemies/BasicDrones/Sheet.png" id="1_dio3h"]
+[ext_resource type="Script" uid="uid://dh1cso5edjs0h" path="res://Scripts/Enemies/drone_base.gd" id="1_o4ht1"]
+[ext_resource type="Script" uid="uid://ckag3qwqdm8r7" path="res://Scripts/Enemies/Visual/basic_drone.gd" id="2_7khre"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4ht1"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6dsp"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf08c"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3x88"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7khre"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7khre"]
+light_mode = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22dso"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7khre"]
+cull_mode = 1
+polygon = PackedVector2Array(-2, 2, 2, 2, 2, 0, 3, 0, 3, -1, 6, -1, 6, -2, 7, -2, 7, -3, 5, -3, 5, -4, 2, -4, 2, -5, -2, -5, -2, -4, -5, -4, -5, -3, -7, -3, -7, -2, -6, -2, -6, -1, -3, -1, -3, 0, -2, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2bm7y"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upa3m"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a8g2"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0m1y"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dn6co"]
+atlas = ExtResource("1_dio3h")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="Animation" id="Animation_7khre"]
+resource_name = "Idle"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyBG/PropellorsBack/Propellors/Blade:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyBG/PropellorsBack/Propellors/Blade2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2bm7y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BodyBG/PropellorsBack/Propellors/Blade:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BodyBG/PropellorsBack/Propellors/Blade2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_upa3m"]
+_data = {
+&"Idle": SubResource("Animation_7khre"),
+&"RESET": SubResource("Animation_2bm7y")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7khre"]
+radius = 4.5
+height = 12.0
+
+[node name="BasicDrone" type="CharacterBody2D" node_paths=PackedStringArray("node_attack_origin", "node_attack_indicator", "node_attack_indicator2")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_o4ht1")
+node_attack_origin = NodePath("Sprite/BodyBG/GunMountBG/Gun")
+node_attack_indicator = NodePath("Sprite/BodyBG/GunMountBG/Gun/GunGlow")
+node_attack_indicator2 = NodePath("Sprite/BodyBG/GunMountBG/Gun/GunBG/GunBGGlow")
+
+[node name="Sprite" type="Node2D" parent="."]
+position = Vector2(0, 1)
+script = ExtResource("2_7khre")
+
+[node name="BodyBG" type="Sprite2D" parent="Sprite"]
+texture = SubResource("AtlasTexture_o4ht1")
+
+[node name="PropellorsBack" type="Sprite2D" parent="Sprite/BodyBG"]
+show_behind_parent = true
+texture = SubResource("AtlasTexture_j6dsp")
+
+[node name="Propellors" type="Sprite2D" parent="Sprite/BodyBG/PropellorsBack"]
+show_behind_parent = true
+texture = SubResource("AtlasTexture_nf08c")
+
+[node name="Blade" type="Sprite2D" parent="Sprite/BodyBG/PropellorsBack/Propellors"]
+position = Vector2(-5, -5)
+texture = SubResource("AtlasTexture_q3x88")
+offset = Vector2(0, 0.5)
+
+[node name="Blade2" type="Sprite2D" parent="Sprite/BodyBG/PropellorsBack/Propellors"]
+position = Vector2(5, -5)
+texture = SubResource("AtlasTexture_q3x88")
+offset = Vector2(0, 0.5)
+
+[node name="Body" type="Sprite2D" parent="Sprite/BodyBG"]
+texture = SubResource("AtlasTexture_7khre")
+
+[node name="EyeGlow" type="Sprite2D" parent="Sprite/BodyBG/Body"]
+material = SubResource("CanvasItemMaterial_7khre")
+texture = SubResource("AtlasTexture_22dso")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite/BodyBG/Body"]
+occluder = SubResource("OccluderPolygon2D_7khre")
+
+[node name="GunMountBG" type="Sprite2D" parent="Sprite/BodyBG"]
+show_behind_parent = true
+position = Vector2(0, 4)
+texture = SubResource("AtlasTexture_2bm7y")
+
+[node name="Gun" type="Sprite2D" parent="Sprite/BodyBG/GunMountBG"]
+position = Vector2(1, 1)
+rotation = 3.1415927
+texture = SubResource("AtlasTexture_upa3m")
+offset = Vector2(0, 0.5)
+
+[node name="GunGlow" type="Sprite2D" parent="Sprite/BodyBG/GunMountBG/Gun"]
+material = SubResource("CanvasItemMaterial_7khre")
+texture = SubResource("AtlasTexture_2a8g2")
+offset = Vector2(0, 0.5)
+
+[node name="GunBG" type="Sprite2D" parent="Sprite/BodyBG/GunMountBG/Gun"]
+show_behind_parent = true
+position = Vector2(0, 1)
+texture = SubResource("AtlasTexture_t0m1y")
+offset = Vector2(0, -0.5)
+
+[node name="GunBGGlow" type="Sprite2D" parent="Sprite/BodyBG/GunMountBG/Gun/GunBG"]
+material = SubResource("CanvasItemMaterial_7khre")
+position = Vector2(-1.1920929e-07, 0)
+texture = SubResource("AtlasTexture_dn6co")
+offset = Vector2(0, -0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+libraries = {
+&"": SubResource("AnimationLibrary_upa3m")
+}
+autoplay = "Idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7khre")
+
+[node name="PlayerClearanceRaycast" type="RayCast2D" parent="."]
+enabled = false
+collision_mask = 4
+
+[node name="PlayerSightRaycast" type="RayCast2D" parent="."]
+enabled = false
+collision_mask = 4
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_max_distance = 1000.0
+path_postprocessing = 1

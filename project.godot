@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 window/stretch/mode="viewport"
 
+[global_group]
+
+Solid="Solid Terrain, such as walls."
+
 [input]
 
 actionJump={
@@ -49,7 +53,9 @@ actionGrapple={
 [layer_names]
 
 2d_physics/layer_1="Solid"
-2d_physics/layer_5="Grapple"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="EnemyPathBlocking"
+2d_physics/layer_5="Grapplable"
 2d_physics/layer_6="GrappleBlocking"
 
 [rendering]

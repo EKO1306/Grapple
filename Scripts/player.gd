@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 
 var stat_moveSpeed = 7.0
-var stat_groundFriction = 0.95
-var stat_airFriction = 0.99
+var stat_groundFriction = 2.0
+var stat_airFriction = 0.5
 var stat_jumpHeight = 130.0
 var stat_grappleAcceleration = 300.0
 
@@ -47,7 +47,7 @@ func _process(delta: float) -> void:
 		visual_wheelSpinSpeed = velocity.x / 12.0
 		node_dustParticles.amount_ratio = abs(sigmoid(velocity.x, 2.0, 0.03) - 1.0)
 	else:
-		visual_wheelSpinSpeed *= stat_airFriction
+		visual_wheelSpinSpeed *= 1 - (stat_airFriction * delta)
 		node_dustParticles.amount_ratio = 0
 	node_wheel.rotation_degrees += visual_wheelSpinSpeed
 	
@@ -94,9 +94,9 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x += direction * stat_moveSpeed * 0.25
 	if is_on_floor():
-		velocity.x *= stat_groundFriction
+		velocity.x *= 1 - (stat_groundFriction * delta)
 	else:
-		velocity.x *= stat_airFriction
+		velocity.x *= 1 - (stat_airFriction * delta)
 	
 	move_and_slide()
 	
